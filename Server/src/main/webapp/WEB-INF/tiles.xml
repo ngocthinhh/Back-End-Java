@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache
+Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
+        <put-attribute name="title" value="Trang Chu" />
+        <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/content.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+    </definition>
+    
+    <definition name="user" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user.jsp" />
+    </definition>
+    
+    <definition name="addUser" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/addUser.jsp" />
+    </definition>
+    
+    <definition name="updateUser" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/updateUser.jsp" />
+    </definition>
+    
+    <definition name="deleteUser" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/deleteUser.jsp" />
+    </definition>
+    
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/index.jsp" />
+    </definition>
+    
+    <definition name="content" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/content.jsp" />
+    </definition>
+    
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Dang Nhap" />
+        <put-attribute name="content" value="/WEB-INF/jsp/login.jsp" />
+    </definition>
+</tiles-definitions>
