@@ -5,7 +5,6 @@
 package com.thinh.repositories.Impl;
 
 import com.thinh.pojo.User;
-import com.thinh.repositories.UserRepository;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -17,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import com.thinh.repositories.UsersRepository;
 
 /**
  *
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class UserRepositoryImpl implements UserRepository{
+public class UsersRepositoryImpl implements UsersRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
     
@@ -106,12 +106,14 @@ public class UserRepositoryImpl implements UserRepository{
     }
     
     @Override
-    public boolean updateUser(User user, String usernam)
+    public void updateUser(User user, int id)
     {
         Session s = this.sessionFactory.getObject().getCurrentSession();
-        user.setUsername(usernam);
-        s.update(user);
-        return true;
+        
+        if (id != -1)
+        {
+            s.update(user);
+        }
     }
     
     @Override
@@ -128,13 +130,9 @@ public class UserRepositoryImpl implements UserRepository{
                 }
             
             return true;
+            
         } catch (Exception e) {
             return false;
         }
-    }
-
-    @Override
-    public boolean updateUser(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

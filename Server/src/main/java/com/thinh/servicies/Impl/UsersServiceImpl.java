@@ -5,8 +5,6 @@
 package com.thinh.servicies.Impl;
 
 import com.thinh.pojo.User;
-import com.thinh.repositories.UserRepository;
-import com.thinh.servicies.UserService;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,15 +15,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.thinh.repositories.UsersRepository;
+import com.thinh.servicies.UsersService;
 
 /**
  *
  * @author Ngoc Thinh
  */
 @Service("userDetailsService")
-public class UserServiceImpl implements UserService{
+public class UsersServiceImpl implements UsersService{
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository userRepository;
     
     @Override
     public List<User> getUser() {
@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService{
     public User getUserByUsername(String username)
     {
         return this.userRepository.getUserByUsername(username);
+    }
+    
+    @Override
+    public User getUserById(int id) {
+        return this.userRepository.getUserById(id);
     }
     
     @Override
@@ -61,8 +66,8 @@ public class UserServiceImpl implements UserService{
     }
     
     @Override
-    public boolean updateUser(User user) {
-        return this.userRepository.updateUser(user);
+    public void updateUser(User user, int id) {
+        this.userRepository.updateUser(user, id);
     }
     
     @Override

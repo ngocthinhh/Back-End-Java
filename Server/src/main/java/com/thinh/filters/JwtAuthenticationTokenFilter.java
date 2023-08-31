@@ -6,7 +6,6 @@ package com.thinh.filters;
 
 import com.thinh.pojo.User;
 import com.thinh.components.JwtService;
-import com.thinh.servicies.UserService;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import com.thinh.servicies.UsersService;
 
 /**
  *
@@ -34,7 +34,7 @@ public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthentication
     @Autowired
     private JwtService jwtService;
     @Autowired
-    private UserService userService;
+    private UsersService userService;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

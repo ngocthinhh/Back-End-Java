@@ -7,9 +7,7 @@ package com.thinh.controllers;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.thinh.pojo.User;
-import com.thinh.repositories.Impl.UserRepositoryImpl;
-import com.thinh.repositories.UserRepository;
-import com.thinh.servicies.UserService;
+import com.thinh.repositories.Impl.UsersRepositoryImpl;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +27,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.thinh.repositories.UsersRepository;
+import com.thinh.servicies.UsersService;
 
 /**
  *
@@ -37,10 +37,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
     @Autowired
-    private UserService userService;
+    private UsersService userService;
     
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository userRepository;
     
     @Autowired
     private Cloudinary cloudinary;
@@ -186,14 +186,14 @@ public class HomeController {
     }
     
     @PostMapping("/update/{id}")
-    public String updateUser(@ModelAttribute(value = "user") @Valid User u,
+    public String updateUser(@ModelAttribute(value = "user") User u,
             @PathVariable(value = "id") int id) {
 
-        User userq = this.userRepository.getUserById(id);
+        User userq = this.userService.getUserById(id);
         
-        userq.setUsername(u.getUsername());
+//        userq.setUsername(u.getUsername());
         
-        this.userService.updateUser(userq);
+        this.userService.updateUser(userq, id);
 
         return "redirect:/";
     }
