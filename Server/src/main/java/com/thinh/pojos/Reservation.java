@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "reservation")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Reservation.findAll", query = "SELECT r FROM Reservation r"),
     @NamedQuery(name = "Reservation.findByIdReservation", query = "SELECT r FROM Reservation r WHERE r.idReservation = :idReservation"),
@@ -47,14 +47,18 @@ public class Reservation implements Serializable {
     private String timeReservation;
     @Column(name = "number_seat_reservation")
     private Integer numberSeatReservation;
-    @JoinColumn(name = "id_customer_reservation", referencedColumnName = "id_customer")
-    @ManyToOne
-    private Customer idCustomerReservation;
-    @JoinColumn(name = "id_trip_reservation", referencedColumnName = "id_trip")
-    @ManyToOne
-    private Trip idTripReservation;
-    @OneToMany(mappedBy = "idReservationPayment")
-    private Set<Payment> paymentSet;
+//    @JoinColumn(name = "id_customer_reservation", referencedColumnName = "id_customer")
+//    @ManyToOne
+//    private Customer idCustomerReservation;
+//    @JoinColumn(name = "id_trip_reservation", referencedColumnName = "id_trip")
+//    @ManyToOne
+//    private Trip idTripReservation;
+//    @OneToMany(mappedBy = "idReservationPayment")
+//    private Set<Payment> paymentSet;
+    @Column(name = "id_user_reservation")
+    private Integer idUserReservation;
+    @Column(name = "id_trip_reservation")
+    private Integer idTripReservation;
 
     public Reservation() {
     }
@@ -87,54 +91,82 @@ public class Reservation implements Serializable {
         this.numberSeatReservation = numberSeatReservation;
     }
 
-    public Customer getIdCustomerReservation() {
-        return idCustomerReservation;
+//    public Customer getIdCustomerReservation() {
+//        return idCustomerReservation;
+//    }
+//
+//    public void setIdCustomerReservation(Customer idCustomerReservation) {
+//        this.idCustomerReservation = idCustomerReservation;
+//    }
+//
+//    public Trip getIdTripReservation() {
+//        return idTripReservation;
+//    }
+//
+//    public void setIdTripReservation(Trip idTripReservation) {
+//        this.idTripReservation = idTripReservation;
+//    }
+//
+//    @XmlTransient
+//    public Set<Payment> getPaymentSet() {
+//        return paymentSet;
+//    }
+//
+//    public void setPaymentSet(Set<Payment> paymentSet) {
+//        this.paymentSet = paymentSet;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idReservation != null ? idReservation.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Reservation)) {
+//            return false;
+//        }
+//        Reservation other = (Reservation) object;
+//        if ((this.idReservation == null && other.idReservation != null) || (this.idReservation != null && !this.idReservation.equals(other.idReservation))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.Reservation[ idReservation=" + idReservation + " ]";
+//    }
+
+    /**
+     * @return the idUserReservation
+     */
+    public Integer getIdUserReservation() {
+        return idUserReservation;
     }
 
-    public void setIdCustomerReservation(Customer idCustomerReservation) {
-        this.idCustomerReservation = idCustomerReservation;
+    /**
+     * @param idUserReservation the idUserReservation to set
+     */
+    public void setIdUserReservation(Integer idUserReservation) {
+        this.idUserReservation = idUserReservation;
     }
 
-    public Trip getIdTripReservation() {
+    /**
+     * @return the idTripReservation
+     */
+    public Integer getIdTripReservation() {
         return idTripReservation;
     }
 
-    public void setIdTripReservation(Trip idTripReservation) {
+    /**
+     * @param idTripReservation the idTripReservation to set
+     */
+    public void setIdTripReservation(Integer idTripReservation) {
         this.idTripReservation = idTripReservation;
-    }
-
-    @XmlTransient
-    public Set<Payment> getPaymentSet() {
-        return paymentSet;
-    }
-
-    public void setPaymentSet(Set<Payment> paymentSet) {
-        this.paymentSet = paymentSet;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idReservation != null ? idReservation.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Reservation)) {
-            return false;
-        }
-        Reservation other = (Reservation) object;
-        if ((this.idReservation == null && other.idReservation != null) || (this.idReservation != null && !this.idReservation.equals(other.idReservation))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.Reservation[ idReservation=" + idReservation + " ]";
     }
     
 }

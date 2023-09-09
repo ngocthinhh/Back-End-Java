@@ -16,38 +16,74 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
     </definition>
     
-    <definition name="user" extends="baseLayout">
-        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
-        <put-attribute name="content" value="/WEB-INF/jsp/user.jsp" />
-    </definition>
-    
-    <definition name="addUser" extends="baseLayout">
-        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
-        <put-attribute name="content" value="/WEB-INF/jsp/addUser.jsp" />
-    </definition>
-    
-    <definition name="updateUser" extends="baseLayout">
-        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
-        <put-attribute name="content" value="/WEB-INF/jsp/updateUser.jsp" />
-    </definition>
-    
-    <definition name="deleteUser" extends="baseLayout">
-        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
-        <put-attribute name="content" value="/WEB-INF/jsp/deleteUser.jsp" />
-    </definition>
-    
-    <definition name="index" extends="baseLayout">
-        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
-        <put-attribute name="content" value="/WEB-INF/jsp/index.jsp" />
-    </definition>
-    
+    <!--LAYOUT NON-LOGIN-->
     <definition name="content" extends="baseLayout">
         <put-attribute name="title" value="Quan Ly Nguoi Dung" />
         <put-attribute name="content" value="/WEB-INF/jsp/content.jsp" />
     </definition>
     
     <definition name="login" extends="baseLayout">
-        <put-attribute name="title" value="Dang Nhap" />
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
         <put-attribute name="content" value="/WEB-INF/jsp/login.jsp" />
     </definition>
+
+    <!--LAYOUT ADMIN-->    
+    <definition name="homepageAdmin" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="header" value="/WEB-INF/layout/headerRole.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/homepageAdmin.jsp" />
+    </definition>
+    
+    <definition name="listUser" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listUser.jsp" />
+    </definition>
+    
+    <definition name="user" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/user.jsp" />
+    </definition>
+    
+    <definition name="listRoute" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listRoute.jsp" />
+    </definition>
+    
+    <definition name="route" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/route.jsp" />
+    </definition>
+    
+    <definition name="listTrip" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listTrip.jsp" />
+    </definition>
+    
+    <definition name="trip" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/trip.jsp" />
+    </definition>
+    
+    <definition name="listReservation" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listReservation.jsp" />
+    </definition>
+    
+    <definition name="listPayment" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listPayment.jsp" />
+    </definition>
+    
+    <definition name="listFeedback" extends="homepageAdmin">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listFeedback.jsp" />
+    </definition>
+    
+    <!--LAYOUT EMPLOYEE-->
+    <definition name="homepageEmployee" extends="baseLayout">
+        <put-attribute name="title" value="Quan Ly Nguoi Dung" />
+        <put-attribute name="header" value="/WEB-INF/layout/headerRole.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/homepageEmployee.jsp" />
+    </definition>
+    
 </tiles-definitions>

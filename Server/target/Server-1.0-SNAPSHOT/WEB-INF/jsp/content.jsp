@@ -7,5 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-<h1>OKE</h1>
+<br/>
+<h1>SERVER ĐÃ SẴN SÀNG</h1>
+<br/>

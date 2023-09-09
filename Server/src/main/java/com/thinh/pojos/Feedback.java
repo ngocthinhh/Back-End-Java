@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "feedback")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Feedback.findAll", query = "SELECT f FROM Feedback f"),
     @NamedQuery(name = "Feedback.findByIdFeedback", query = "SELECT f FROM Feedback f WHERE f.idFeedback = :idFeedback"),
@@ -45,12 +45,16 @@ public class Feedback implements Serializable {
     private String textFeedback;
     @Column(name = "rating_feedback")
     private Integer ratingFeedback;
-    @JoinColumn(name = "id_customer_feedback", referencedColumnName = "id_customer")
-    @ManyToOne
-    private Customer idCustomerFeedback;
-    @JoinColumn(name = "id_trip_feedback", referencedColumnName = "id_trip")
-    @ManyToOne
-    private Trip idTripFeedback;
+//    @JoinColumn(name = "id_customer_feedback", referencedColumnName = "id_customer")
+//    @ManyToOne
+//    private Customer idCustomerFeedback;
+//    @JoinColumn(name = "id_trip_feedback", referencedColumnName = "id_trip")
+//    @ManyToOne
+//    private Trip idTripFeedback;
+    @Column(name = "id_user_feedback")
+    private Integer idUserFeedback;
+    @Column(name = "id_trip_feedback")
+    private Integer idTripFeedback;
 
     public Feedback() {
     }
@@ -83,45 +87,73 @@ public class Feedback implements Serializable {
         this.ratingFeedback = ratingFeedback;
     }
 
-    public Customer getIdCustomerFeedback() {
-        return idCustomerFeedback;
+//    public Customer getIdCustomerFeedback() {
+//        return idCustomerFeedback;
+//    }
+//
+//    public void setIdCustomerFeedback(Customer idCustomerFeedback) {
+//        this.idCustomerFeedback = idCustomerFeedback;
+//    }
+//
+//    public Trip getIdTripFeedback() {
+//        return idTripFeedback;
+//    }
+//
+//    public void setIdTripFeedback(Trip idTripFeedback) {
+//        this.idTripFeedback = idTripFeedback;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idFeedback != null ? idFeedback.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Feedback)) {
+//            return false;
+//        }
+//        Feedback other = (Feedback) object;
+//        if ((this.idFeedback == null && other.idFeedback != null) || (this.idFeedback != null && !this.idFeedback.equals(other.idFeedback))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.Feedback[ idFeedback=" + idFeedback + " ]";
+//    }
+
+    /**
+     * @return the idUserFeedback
+     */
+    public Integer getIdUserFeedback() {
+        return idUserFeedback;
     }
 
-    public void setIdCustomerFeedback(Customer idCustomerFeedback) {
-        this.idCustomerFeedback = idCustomerFeedback;
+    /**
+     * @param idUserFeedback the idUserFeedback to set
+     */
+    public void setIdUserFeedback(Integer idUserFeedback) {
+        this.idUserFeedback = idUserFeedback;
     }
 
-    public Trip getIdTripFeedback() {
+    /**
+     * @return the idTripFeedback
+     */
+    public Integer getIdTripFeedback() {
         return idTripFeedback;
     }
 
-    public void setIdTripFeedback(Trip idTripFeedback) {
+    /**
+     * @param idTripFeedback the idTripFeedback to set
+     */
+    public void setIdTripFeedback(Integer idTripFeedback) {
         this.idTripFeedback = idTripFeedback;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idFeedback != null ? idFeedback.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Feedback)) {
-            return false;
-        }
-        Feedback other = (Feedback) object;
-        if ((this.idFeedback == null && other.idFeedback != null) || (this.idFeedback != null && !this.idFeedback.equals(other.idFeedback))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.Feedback[ idFeedback=" + idFeedback + " ]";
     }
     
 }

@@ -4,7 +4,7 @@
  */
 package com.thinh.filters;
 
-import com.thinh.pojo.User;
+import com.thinh.pojos.User;
 import com.thinh.components.JwtService;
 import java.io.IOException;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import com.thinh.servicies.UsersService;
+import com.thinh.servicies.UserService;
 
 /**
  *
@@ -34,7 +34,7 @@ public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthentication
     @Autowired
     private JwtService jwtService;
     @Autowired
-    private UsersService userService;
+    private UserService userService;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -51,9 +51,9 @@ public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthentication
                 boolean accountNonLocked = true;
                 
                 Set<GrantedAuthority> authorities = new HashSet<>();
-                authorities.add(new SimpleGrantedAuthority(user.getRole()));
+                authorities.add(new SimpleGrantedAuthority(user.getRoleUser()));
                 
-                UserDetails userDetail = new org.springframework.security.core.userdetails.User(username, user.getPassword(), enabled, accountNonExpired,
+                UserDetails userDetail = new org.springframework.security.core.userdetails.User(username, user.getPasswordUser(), enabled, accountNonExpired,
                         credentialsNonExpired, accountNonLocked, authorities);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetail,
                         null, userDetail.getAuthorities());

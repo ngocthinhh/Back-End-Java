@@ -1,32 +1,30 @@
 <%-- 
     Document   : login
-    Created on : Aug 24, 2023, 4:06:30 PM
+    Created on : Sep 8, 2023, 9:20:41 PM
     Author     : Ngoc Thinh
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<c:if test="${param.error != null}" >
-    <div class="alert alert-danger">
-        Da co loi xay ra!
-    </div>
-</c:if>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:url value="/login" var="action" />
 
-<form method="post" action="${action}">
+<form:form method="post" action="${action}" modelAttribute="user" enctype="multipart/form-data">
+    <form:hidden path="idUser" />
     <div class="form-group">
-        <label for="username" >Username</label>
-        <input type="text" id="username" name="name" class="form-control" />
+        <label for="usernameUser" >Tài khoản</label>
+        <form:input type="text" class="form-control" path="usernameUser" id="usernameUser"/>
     </div>
-    
     <div class="form-group">
-        <label for="password" >Password</label>
-        <input type="password" id="password" name="password" class="form-control" />
+        <label for="passwordUser" >Mật khẩu</label>
+        <form:input type="password" class="form-control" path="passwordUser" id="passwordUser"/>
     </div>
-    
-    <div class="form-group">
-        <input type="submit" value="Dang nhap" />
+
+    <div class="form-floating mb-3 mt-3">
+        <button class="btn btn-info" type="submit">
+            Đăng nhập
+        </button>
     </div>
-</form>
+</form:form>
+

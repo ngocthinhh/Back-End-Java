@@ -32,7 +32,7 @@ public class HibernateConfig {
         LocalSessionFactoryBean sessionFactory
                 = new LocalSessionFactoryBean();
         sessionFactory.setPackagesToScan(new String[]{
-            "com.thinh.pojo"
+            "com.thinh.pojos"
 
         });
         sessionFactory.setDataSource(dataSource());

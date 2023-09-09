@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "payment")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Payment.findAll", query = "SELECT p FROM Payment p"),
     @NamedQuery(name = "Payment.findByIdPayment", query = "SELECT p FROM Payment p WHERE p.idPayment = :idPayment"),
@@ -45,12 +45,16 @@ public class Payment implements Serializable {
     @Size(max = 7)
     @Column(name = "type_payment")
     private String typePayment;
-    @JoinColumn(name = "id_customer_payment", referencedColumnName = "id_customer")
-    @ManyToOne
-    private Customer idCustomerPayment;
-    @JoinColumn(name = "id_reservation_payment", referencedColumnName = "id_reservation")
-    @ManyToOne
-    private Reservation idReservationPayment;
+//    @JoinColumn(name = "id_customer_payment", referencedColumnName = "id_customer")
+//    @ManyToOne
+//    private Customer idCustomerPayment;
+//    @JoinColumn(name = "id_reservation_payment", referencedColumnName = "id_reservation")
+//    @ManyToOne
+//    private Reservation idReservationPayment;
+    @Column(name = "id_user_payment")
+    private Integer idUserPayment;
+    @Column(name = "id_reservation_payment")
+    private Integer idReservationPayment;
 
     public Payment() {
     }
@@ -83,45 +87,73 @@ public class Payment implements Serializable {
         this.typePayment = typePayment;
     }
 
-    public Customer getIdCustomerPayment() {
-        return idCustomerPayment;
+//    public Customer getIdCustomerPayment() {
+//        return idCustomerPayment;
+//    }
+//
+//    public void setIdCustomerPayment(Customer idCustomerPayment) {
+//        this.idCustomerPayment = idCustomerPayment;
+//    }
+//
+//    public Reservation getIdReservationPayment() {
+//        return idReservationPayment;
+//    }
+//
+//    public void setIdReservationPayment(Reservation idReservationPayment) {
+//        this.idReservationPayment = idReservationPayment;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idPayment != null ? idPayment.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Payment)) {
+//            return false;
+//        }
+//        Payment other = (Payment) object;
+//        if ((this.idPayment == null && other.idPayment != null) || (this.idPayment != null && !this.idPayment.equals(other.idPayment))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.Payment[ idPayment=" + idPayment + " ]";
+//    }
+
+    /**
+     * @return the idUserPayment
+     */
+    public Integer getIdUserPayment() {
+        return idUserPayment;
     }
 
-    public void setIdCustomerPayment(Customer idCustomerPayment) {
-        this.idCustomerPayment = idCustomerPayment;
+    /**
+     * @param idUserPayment the idUserPayment to set
+     */
+    public void setIdUserPayment(Integer idUserPayment) {
+        this.idUserPayment = idUserPayment;
     }
 
-    public Reservation getIdReservationPayment() {
+    /**
+     * @return the idReservationPayment
+     */
+    public Integer getIdReservationPayment() {
         return idReservationPayment;
     }
 
-    public void setIdReservationPayment(Reservation idReservationPayment) {
+    /**
+     * @param idReservationPayment the idReservationPayment to set
+     */
+    public void setIdReservationPayment(Integer idReservationPayment) {
         this.idReservationPayment = idReservationPayment;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idPayment != null ? idPayment.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Payment)) {
-            return false;
-        }
-        Payment other = (Payment) object;
-        if ((this.idPayment == null && other.idPayment != null) || (this.idPayment != null && !this.idPayment.equals(other.idPayment))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.Payment[ idPayment=" + idPayment + " ]";
     }
     
 }

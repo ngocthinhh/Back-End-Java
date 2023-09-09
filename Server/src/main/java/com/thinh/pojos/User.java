@@ -15,10 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -26,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "user")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
     @NamedQuery(name = "User.findByIdUser", query = "SELECT u FROM User u WHERE u.idUser = :idUser"),
@@ -48,20 +51,38 @@ public class User implements Serializable {
     @Size(max = 100)
     @Column(name = "password_user")
     private String passwordUser;
+    @Size(max = 100)
+    @Column(name = "full_name_user")
+    private String fullNameUser;
+    @Size(max = 100)
+    @Column(name = "phone_number_user")
+    private String phoneNumberUser;
     @Size(max = 8)
     @Column(name = "role_user")
     private String roleUser;
     @Size(max = 255)
     @Column(name = "avatar_user")
     private String avatarUser;
-    @OneToMany(mappedBy = "idUserDriver")
-    private Set<Driver> driverSet;
-    @OneToMany(mappedBy = "idUserEmployee")
-    private Set<Employee> employeeSet;
-    @OneToMany(mappedBy = "idUserCustomer")
-    private Set<Customer> customerSet;
+//    @OneToOne(mappedBy = "idUserDriver")
+//    private Driver driver;
+//    @OneToOne(mappedBy = "idUserEmployee")
+//    private Employee employee;
+//    @OneToOne(mappedBy = "idUserCustomer")
+//    private Customer customer;
+    
+    @Transient
+    private MultipartFile file;
 
     public User() {
+//        this.idUser = -1;
+//        this.usernameUser = null;
+//        this.passwordUser = null;
+//        this.avatarUser = null;
+//        this.customer = null;
+//        this.employee = null;
+//        this.driver = null;
+//        this.roleUser = null;
+//        this.file = null;
     }
 
     public User(Integer idUser) {
@@ -108,56 +129,98 @@ public class User implements Serializable {
         this.avatarUser = avatarUser;
     }
 
-    @XmlTransient
-    public Set<Driver> getDriverSet() {
-        return driverSet;
+//    @XmlTransient
+//    public Driver getDriver() {
+//        return driver;
+//    }
+//
+//    public void setDriver(Driver driver) {
+//        this.driver = driver;
+//    }
+//
+//    @XmlTransient
+//    public Employee getEmployee() {
+//        return employee;
+//    }
+//
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//    }
+//
+//    @XmlTransient
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idUser != null ? idUser.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof User)) {
+//            return false;
+//        }
+//        User other = (User) object;
+//        if ((this.idUser == null && other.idUser != null) || (this.idUser != null && !this.idUser.equals(other.idUser))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.User[ idUser=" + idUser + " ]";
+//    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
     }
 
-    public void setDriverSet(Set<Driver> driverSet) {
-        this.driverSet = driverSet;
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
-    @XmlTransient
-    public Set<Employee> getEmployeeSet() {
-        return employeeSet;
+    /**
+     * @return the fullNameUser
+     */
+    public String getFullNameUser() {
+        return fullNameUser;
     }
 
-    public void setEmployeeSet(Set<Employee> employeeSet) {
-        this.employeeSet = employeeSet;
+    /**
+     * @param fullNameUser the fullNameUser to set
+     */
+    public void setFullNameUser(String fullNameUser) {
+        this.fullNameUser = fullNameUser;
     }
 
-    @XmlTransient
-    public Set<Customer> getCustomerSet() {
-        return customerSet;
+    /**
+     * @return the phoneNumberUser
+     */
+    public String getPhoneNumberUser() {
+        return phoneNumberUser;
     }
 
-    public void setCustomerSet(Set<Customer> customerSet) {
-        this.customerSet = customerSet;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idUser != null ? idUser.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.idUser == null && other.idUser != null) || (this.idUser != null && !this.idUser.equals(other.idUser))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.User[ idUser=" + idUser + " ]";
+    /**
+     * @param phoneNumberUser the phoneNumberUser to set
+     */
+    public void setPhoneNumberUser(String phoneNumberUser) {
+        this.phoneNumberUser = phoneNumberUser;
     }
     
 }

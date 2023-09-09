@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "employee")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
     @NamedQuery(name = "Employee.findByIdEmployee", query = "SELECT e FROM Employee e WHERE e.idEmployee = :idEmployee"),
@@ -49,9 +50,11 @@ public class Employee implements Serializable {
     @Size(max = 20)
     @Column(name = "phone_number_employee")
     private String phoneNumberEmployee;
-    @JoinColumn(name = "id_user_employee", referencedColumnName = "id_user")
-    @ManyToOne
-    private User idUserEmployee;
+//    @JoinColumn(name = "id_user_employee", referencedColumnName = "id_user")
+//    @OneToOne
+//    private User idUserEmployee;
+    @Column(name = "id_user_employee")
+    private int idUserEmployee;
 
     public Employee() {
     }
@@ -92,37 +95,51 @@ public class Employee implements Serializable {
         this.phoneNumberEmployee = phoneNumberEmployee;
     }
 
-    public User getIdUserEmployee() {
+//    public User getIdUserEmployee() {
+//        return idUserEmployee;
+//    }
+//
+//    public void setIdUserEmployee(User idUserEmployee) {
+//        this.idUserEmployee = idUserEmployee;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idEmployee != null ? idEmployee.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Employee)) {
+//            return false;
+//        }
+//        Employee other = (Employee) object;
+//        if ((this.idEmployee == null && other.idEmployee != null) || (this.idEmployee != null && !this.idEmployee.equals(other.idEmployee))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.Employee[ idEmployee=" + idEmployee + " ]";
+//    }
+
+    /**
+     * @return the idUserEmployee
+     */
+    public int getIdUserEmployee() {
         return idUserEmployee;
     }
 
-    public void setIdUserEmployee(User idUserEmployee) {
+    /**
+     * @param idUserEmployee the idUserEmployee to set
+     */
+    public void setIdUserEmployee(int idUserEmployee) {
         this.idUserEmployee = idUserEmployee;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idEmployee != null ? idEmployee.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Employee)) {
-            return false;
-        }
-        Employee other = (Employee) object;
-        if ((this.idEmployee == null && other.idEmployee != null) || (this.idEmployee != null && !this.idEmployee.equals(other.idEmployee))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.Employee[ idEmployee=" + idEmployee + " ]";
     }
     
 }

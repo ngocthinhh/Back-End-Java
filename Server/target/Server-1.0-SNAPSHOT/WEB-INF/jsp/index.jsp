@@ -8,18 +8,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <ul>
     <c:forEach var="u" items="${users}">
-        <li>${u.id}</li>
-        <li>${u.firstname}</li>
-        <li>${u.lastname}</li>
-        <li>${u.phone}</li>
-        <li>${u.username}</li>
-        <li>${u.password}</li>
-        <li>${u.active}</li>
-        <li>${u.role}</li>
+        <li>${u.idUser}</li>
+        <li>${u.usernameUser}</li>
+        <li>${u.passwordUser}</li>
+        <li>${u.roleUser}</li>
+        <li>${u.avatarUser}</li>
         <li>
-            <img src="${u.avatar}" alt="${u.username}" width="120" />
+            <img src="${u.avatarUser}" alt="${u.usernameUser}" width="120" />
         </li>
     </c:forEach>
 </ul>
-
-<h1>${users[1].username}</h1>

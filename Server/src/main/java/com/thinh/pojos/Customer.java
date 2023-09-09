@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "customer")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c"),
     @NamedQuery(name = "Customer.findByIdCustomer", query = "SELECT c FROM Customer c WHERE c.idCustomer = :idCustomer"),
@@ -52,15 +53,17 @@ public class Customer implements Serializable {
     @Size(max = 20)
     @Column(name = "phone_number_customer")
     private String phoneNumberCustomer;
-    @OneToMany(mappedBy = "idCustomerFeedback")
-    private Set<Feedback> feedbackSet;
-    @OneToMany(mappedBy = "idCustomerReservation")
-    private Set<Reservation> reservationSet;
-    @OneToMany(mappedBy = "idCustomerPayment")
-    private Set<Payment> paymentSet;
-    @JoinColumn(name = "id_user_customer", referencedColumnName = "id_user")
-    @ManyToOne
-    private User idUserCustomer;
+//    @OneToMany(mappedBy = "idCustomerFeedback")
+//    private Set<Feedback> feedbackSet;
+//    @OneToMany(mappedBy = "idCustomerReservation")
+//    private Set<Reservation> reservationSet;
+//    @OneToMany(mappedBy = "idCustomerPayment")
+//    private Set<Payment> paymentSet;
+//    @JoinColumn(name = "id_user_customer", referencedColumnName = "id_user")
+//    @OneToOne
+//    private User idUserCustomer;
+    @Column(name = "id_user_customer")
+    private int idUserCustomer;
 
     public Customer() {
     }
@@ -101,64 +104,78 @@ public class Customer implements Serializable {
         this.phoneNumberCustomer = phoneNumberCustomer;
     }
 
-    @XmlTransient
-    public Set<Feedback> getFeedbackSet() {
-        return feedbackSet;
-    }
+//    @XmlTransient
+//    public Set<Feedback> getFeedbackSet() {
+//        return feedbackSet;
+//    }
+//
+//    public void setFeedbackSet(Set<Feedback> feedbackSet) {
+//        this.feedbackSet = feedbackSet;
+//    }
+//
+//    @XmlTransient
+//    public Set<Reservation> getReservationSet() {
+//        return reservationSet;
+//    }
+//
+//    public void setReservationSet(Set<Reservation> reservationSet) {
+//        this.reservationSet = reservationSet;
+//    }
+//
+//    @XmlTransient
+//    public Set<Payment> getPaymentSet() {
+//        return paymentSet;
+//    }
+//
+//    public void setPaymentSet(Set<Payment> paymentSet) {
+//        this.paymentSet = paymentSet;
+//    }
 
-    public void setFeedbackSet(Set<Feedback> feedbackSet) {
-        this.feedbackSet = feedbackSet;
-    }
+//    public User getIdUserCustomer() {
+//        return idUserCustomer;
+//    }
+//
+//    public void setIdUserCustomer(User idUserCustomer) {
+//        this.setIdUserCustomer(idUserCustomer);
+//    }
 
-    @XmlTransient
-    public Set<Reservation> getReservationSet() {
-        return reservationSet;
-    }
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idCustomer != null ? idCustomer.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Customer)) {
+//            return false;
+//        }
+//        Customer other = (Customer) object;
+//        if ((this.idCustomer == null && other.idCustomer != null) || (this.idCustomer != null && !this.idCustomer.equals(other.idCustomer))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.Customer[ idCustomer=" + idCustomer + " ]";
+//    }
 
-    public void setReservationSet(Set<Reservation> reservationSet) {
-        this.reservationSet = reservationSet;
-    }
-
-    @XmlTransient
-    public Set<Payment> getPaymentSet() {
-        return paymentSet;
-    }
-
-    public void setPaymentSet(Set<Payment> paymentSet) {
-        this.paymentSet = paymentSet;
-    }
-
-    public User getIdUserCustomer() {
+    /**
+     * @return the idUserCustomer
+     */
+    public int getIdUserCustomer() {
         return idUserCustomer;
     }
 
-    public void setIdUserCustomer(User idUserCustomer) {
+    /**
+     * @param idUserCustomer the idUserCustomer to set
+     */
+    public void setIdUserCustomer(int idUserCustomer) {
         this.idUserCustomer = idUserCustomer;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idCustomer != null ? idCustomer.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Customer)) {
-            return false;
-        }
-        Customer other = (Customer) object;
-        if ((this.idCustomer == null && other.idCustomer != null) || (this.idCustomer != null && !this.idCustomer.equals(other.idCustomer))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.Customer[ idCustomer=" + idCustomer + " ]";
     }
     
 }

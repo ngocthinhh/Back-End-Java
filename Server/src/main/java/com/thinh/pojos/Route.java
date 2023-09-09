@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "route")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Route.findAll", query = "SELECT r FROM Route r"),
     @NamedQuery(name = "Route.findByIdRoute", query = "SELECT r FROM Route r WHERE r.idRoute = :idRoute"),
@@ -37,7 +37,7 @@ public class Route implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "id_route")
     private String idRoute;
@@ -50,8 +50,8 @@ public class Route implements Serializable {
     @Size(max = 100)
     @Column(name = "destination_route")
     private String destinationRoute;
-    @OneToMany(mappedBy = "idRouteTrip")
-    private Set<Trip> tripSet;
+//    @OneToMany(mappedBy = "idRouteTrip")
+//    private Set<Trip> tripSet;
 
     public Route() {
     }
@@ -92,38 +92,38 @@ public class Route implements Serializable {
         this.destinationRoute = destinationRoute;
     }
 
-    @XmlTransient
-    public Set<Trip> getTripSet() {
-        return tripSet;
-    }
-
-    public void setTripSet(Set<Trip> tripSet) {
-        this.tripSet = tripSet;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idRoute != null ? idRoute.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Route)) {
-            return false;
-        }
-        Route other = (Route) object;
-        if ((this.idRoute == null && other.idRoute != null) || (this.idRoute != null && !this.idRoute.equals(other.idRoute))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.Route[ idRoute=" + idRoute + " ]";
-    }
+//    @XmlTransient
+//    public Set<Trip> getTripSet() {
+//        return tripSet;
+//    }
+//
+//    public void setTripSet(Set<Trip> tripSet) {
+//        this.tripSet = tripSet;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idRoute != null ? idRoute.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Route)) {
+//            return false;
+//        }
+//        Route other = (Route) object;
+//        if ((this.idRoute == null && other.idRoute != null) || (this.idRoute != null && !this.idRoute.equals(other.idRoute))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.Route[ idRoute=" + idRoute + " ]";
+//    }
     
 }

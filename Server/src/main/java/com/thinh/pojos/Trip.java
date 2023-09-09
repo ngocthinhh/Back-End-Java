@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "trip")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Trip.findAll", query = "SELECT t FROM Trip t"),
     @NamedQuery(name = "Trip.findByIdTrip", query = "SELECT t FROM Trip t WHERE t.idTrip = :idTrip"),
@@ -47,16 +47,22 @@ public class Trip implements Serializable {
     private String departureTimeTrip;
     @Column(name = "price_trip")
     private Integer priceTrip;
-    @OneToMany(mappedBy = "idTripFeedback")
-    private Set<Feedback> feedbackSet;
-    @JoinColumn(name = "id_driver_trip", referencedColumnName = "id_driver")
-    @ManyToOne
-    private Driver idDriverTrip;
-    @JoinColumn(name = "id_route_trip", referencedColumnName = "id_route")
-    @ManyToOne
-    private Route idRouteTrip;
-    @OneToMany(mappedBy = "idTripReservation")
-    private Set<Reservation> reservationSet;
+//    @OneToMany(mappedBy = "idTripFeedback")
+//    private Set<Feedback> feedbackSet;
+//    @JoinColumn(name = "id_driver_trip", referencedColumnName = "id_driver")
+//    @ManyToOne
+//    private Driver idDriverTrip;
+//    @JoinColumn(name = "id_route_trip", referencedColumnName = "id_route")
+//    @ManyToOne
+//    private Route idRouteTrip;
+//    @OneToMany(mappedBy = "idTripReservation")
+//    private Set<Reservation> reservationSet;
+    @Column(name = "number_seats_trip")
+    private String numberSeatsTrip;
+    @Column(name = "id_route_trip")
+    private String idRouteTrip;
+    @Column(name = "id_user_trip")
+    private int idUserTrip;
 
     public Trip() {
     }
@@ -89,63 +95,105 @@ public class Trip implements Serializable {
         this.priceTrip = priceTrip;
     }
 
-    @XmlTransient
-    public Set<Feedback> getFeedbackSet() {
-        return feedbackSet;
-    }
+//    @XmlTransient
+//    public Set<Feedback> getFeedbackSet() {
+//        return feedbackSet;
+//    }
+//
+//    public void setFeedbackSet(Set<Feedback> feedbackSet) {
+//        this.feedbackSet = feedbackSet;
+//    }
+//
+//    public Driver getIdDriverTrip() {
+//        return idDriverTrip;
+//    }
+//
+//    public void setIdDriverTrip(Driver idDriverTrip) {
+//        this.idDriverTrip = idDriverTrip;
+//    }
+//
+//    public Route getIdRouteTrip() {
+//        return idRouteTrip;
+//    }
+//
+//    public void setIdRouteTrip(Route idRouteTrip) {
+//        this.idRouteTrip = idRouteTrip;
+//    }
+//
+//    @XmlTransient
+//    public Set<Reservation> getReservationSet() {
+//        return reservationSet;
+//    }
+//
+//    public void setReservationSet(Set<Reservation> reservationSet) {
+//        this.reservationSet = reservationSet;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 0;
+//        hash += (idTrip != null ? idTrip.hashCode() : 0);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object object) {
+//        // TODO: Warning - this method won't work in the case the id fields are not set
+//        if (!(object instanceof Trip)) {
+//            return false;
+//        }
+//        Trip other = (Trip) object;
+//        if ((this.idTrip == null && other.idTrip != null) || (this.idTrip != null && !this.idTrip.equals(other.idTrip))) {
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "com.thinh.pojos.Trip[ idTrip=" + idTrip + " ]";
+//    }
 
-    public void setFeedbackSet(Set<Feedback> feedbackSet) {
-        this.feedbackSet = feedbackSet;
-    }
-
-    public Driver getIdDriverTrip() {
-        return idDriverTrip;
-    }
-
-    public void setIdDriverTrip(Driver idDriverTrip) {
-        this.idDriverTrip = idDriverTrip;
-    }
-
-    public Route getIdRouteTrip() {
+    /**
+     * @return the idRouteTrip
+     */
+    public String getIdRouteTrip() {
         return idRouteTrip;
     }
 
-    public void setIdRouteTrip(Route idRouteTrip) {
+    /**
+     * @param idRouteTrip the idRouteTrip to set
+     */
+    public void setIdRouteTrip(String idRouteTrip) {
         this.idRouteTrip = idRouteTrip;
     }
 
-    @XmlTransient
-    public Set<Reservation> getReservationSet() {
-        return reservationSet;
+    /**
+     * @return the idDriverTrip
+     */
+    public int getIdUserTrip() {
+        return idUserTrip;
     }
 
-    public void setReservationSet(Set<Reservation> reservationSet) {
-        this.reservationSet = reservationSet;
+    /**
+     * @param idUserTrip the idDriverTrip to set
+     */
+    public void setIdUserTrip(int idUserTrip) {
+        this.idUserTrip = idUserTrip;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idTrip != null ? idTrip.hashCode() : 0);
-        return hash;
+    /**
+     * @return the numberSeatsTrip
+     */
+    public String getNumberSeatsTrip() {
+        return numberSeatsTrip;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Trip)) {
-            return false;
-        }
-        Trip other = (Trip) object;
-        if ((this.idTrip == null && other.idTrip != null) || (this.idTrip != null && !this.idTrip.equals(other.idTrip))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.thinh.pojos.Trip[ idTrip=" + idTrip + " ]";
+    /**
+     * @param numberSeatsTrip the numberSeatsTrip to set
+     */
+    public void setNumberSeatsTrip(String numberSeatsTrip) {
+        this.numberSeatsTrip = numberSeatsTrip;
     }
     
 }
